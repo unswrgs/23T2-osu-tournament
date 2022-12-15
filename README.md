@@ -1,5 +1,5 @@
 
-# Link to Page: <https://unswrgs.github.io/23T2-osu-tournament//>
+# Link to Page: <https://unswrgs.github.io/23T2-osu-tournament/>
 
 ### Page Contents
 
