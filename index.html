@@ -1,1606 +1,677 @@
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>23T2 Tournament Rules</title>
-    <style>
-      /* cspell:disable-file */
-      /* webkit printing magic: print all background colors */
-      html {
-        -webkit-print-color-adjust: exact;
-      }
-      * {
-        box-sizing: border-box;
-        -webkit-print-color-adjust: exact;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      @media only screen {
-        body {
-          margin: 2em auto;
-          max-width: 900px;
-          color: rgb(55, 53, 47);
-        }
-      }
-
-      body {
-        line-height: 1.5;
-        white-space: pre-wrap;
-      }
-
-      a,
-      a.visited {
-        color: inherit;
-        text-decoration: underline;
-      }
-
-      .pdf-relative-link-path {
-        font-size: 80%;
-        color: #444;
-      }
-
-      h1,
-      h2,
-      h3 {
-        letter-spacing: -0.01em;
-        line-height: 1.2;
-        font-weight: 600;
-        margin-bottom: 0;
-      }
-
-      .page-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 0.75em;
-      }
-
-      h1 {
-        font-size: 1.875rem;
-        margin-top: 1.875rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-        margin-top: 1.5rem;
-      }
-
-      h3 {
-        font-size: 1.25rem;
-        margin-top: 1.25rem;
-      }
-
-      .source {
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        padding: 1.5em;
-        word-break: break-all;
-      }
-
-      .callout {
-        border-radius: 3px;
-        padding: 1rem;
-      }
-
-      figure {
-        margin: 1.25em 0;
-        page-break-inside: avoid;
-      }
-
-      figcaption {
-        opacity: 0.5;
-        font-size: 85%;
-        margin-top: 0.5em;
-      }
-
-      mark {
-        background-color: transparent;
-      }
-
-      .indented {
-        padding-left: 1.5em;
-      }
-
-      hr {
-        background: transparent;
-        display: block;
-        width: 100%;
-        height: 1px;
-        visibility: visible;
-        border: none;
-        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      @media only print {
-        img {
-          max-height: 100vh;
-          object-fit: contain;
-        }
-      }
-
-      @page {
-        margin: 1in;
-      }
-
-      .collection-content {
-        font-size: 0.875rem;
-      }
-
-      .column-list {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .column {
-        padding: 0 1em;
-      }
-
-      .column:first-child {
-        padding-left: 0;
-      }
-
-      .column:last-child {
-        padding-right: 0;
-      }
-
-      .table_of_contents-item {
-        display: block;
-        font-size: 0.875rem;
-        line-height: 1.3;
-        padding: 0.125rem;
-      }
-
-      .table_of_contents-indent-1 {
-        margin-left: 1.5rem;
-      }
-
-      .table_of_contents-indent-2 {
-        margin-left: 3rem;
-      }
-
-      .table_of_contents-indent-3 {
-        margin-left: 4.5rem;
-      }
-
-      .table_of_contents-link {
-        text-decoration: none;
-        opacity: 0.7;
-        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-      }
-
-      table,
-      th,
-      td {
-        border: 1px solid rgba(55, 53, 47, 0.09);
-        border-collapse: collapse;
-      }
-
-      table {
-        border-left: none;
-        border-right: none;
-      }
-
-      th,
-      td {
-        font-weight: normal;
-        padding: 0.25em 0.5em;
-        line-height: 1.5;
-        min-height: 1.5em;
-        text-align: left;
-      }
-
-      th {
-        color: rgba(55, 53, 47, 0.6);
-      }
-
-      ol,
-      ul {
-        margin: 0;
-        margin-block-start: 0.6em;
-        margin-block-end: 0.6em;
-      }
-
-      li > ol:first-child,
-      li > ul:first-child {
-        margin-block-start: 0.6em;
-      }
-
-      ul > li {
-        list-style: disc;
-      }
-
-      ul.to-do-list {
-        text-indent: -1.7em;
-      }
-
-      ul.to-do-list > li {
-        list-style: none;
-      }
-
-      .to-do-children-checked {
-        text-decoration: line-through;
-        opacity: 0.375;
-      }
-
-      ul.toggle > li {
-        list-style: none;
-      }
-
-      ul {
-        padding-inline-start: 1.7em;
-      }
-
-      ul > li {
-        padding-left: 0.1em;
-      }
-
-      ol {
-        padding-inline-start: 1.6em;
-      }
-
-      ol > li {
-        padding-left: 0.2em;
-      }
-
-      .mono ol {
-        padding-inline-start: 2em;
-      }
-
-      .mono ol > li {
-        text-indent: -0.4em;
-      }
-
-      .toggle {
-        padding-inline-start: 0em;
-        list-style-type: none;
-      }
-
-      /* Indent toggle children */
-      .toggle > li > details {
-        padding-left: 1.7em;
-      }
-
-      .toggle > li > details > summary {
-        margin-left: -1.1em;
-      }
-
-      .selected-value {
-        display: inline-block;
-        padding: 0 0.5em;
-        background: rgba(206, 205, 202, 0.5);
-        border-radius: 3px;
-        margin-right: 0.5em;
-        margin-top: 0.3em;
-        margin-bottom: 0.3em;
-        white-space: nowrap;
-      }
-
-      .collection-title {
-        display: inline-block;
-        margin-right: 1em;
-      }
-
-      .simple-table {
-        margin-top: 1em;
-        font-size: 0.875rem;
-        empty-cells: show;
-      }
-      .simple-table td {
-        height: 29px;
-        min-width: 120px;
-      }
-
-      .simple-table th {
-        height: 29px;
-        min-width: 120px;
-      }
-
-      .simple-table-header-color {
-        background: rgb(247, 246, 243);
-        color: black;
-      }
-      .simple-table-header {
-        font-weight: 500;
-      }
-
-      time {
-        opacity: 0.5;
-      }
-
-      .icon {
-        display: inline-block;
-        max-width: 1.2em;
-        max-height: 1.2em;
-        text-decoration: none;
-        vertical-align: text-bottom;
-        margin-right: 0.5em;
-      }
-
-      img.icon {
-        border-radius: 3px;
-      }
-
-      .user-icon {
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 100%;
-        margin-right: 0.5rem;
-      }
-
-      .user-icon-inner {
-        font-size: 0.8em;
-      }
-
-      .text-icon {
-        border: 1px solid #000;
-        text-align: center;
-      }
-
-      .page-cover-image {
-        display: block;
-        object-fit: cover;
-        width: 100%;
-        max-height: 30vh;
-      }
-
-      .page-header-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .page-header-icon-with-cover {
-        margin-top: -0.72em;
-        margin-left: 0.07em;
-      }
-
-      .page-header-icon img {
-        border-radius: 3px;
-      }
-
-      .link-to-page {
-        margin: 1em 0;
-        padding: 0;
-        border: none;
-        font-weight: 500;
-      }
-
-      p > .user {
-        opacity: 0.5;
-      }
-
-      td > .user,
-      td > time {
-        white-space: nowrap;
-      }
-
-      input[type="checkbox"] {
-        transform: scale(1.5);
-        margin-right: 0.6em;
-        vertical-align: middle;
-      }
-
-      p {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-      }
-
-      .image {
-        border: none;
-        margin: 1.5em 0;
-        padding: 0;
-        border-radius: 0;
-        text-align: center;
-      }
-
-      .code,
-      code {
-        background: rgba(135, 131, 120, 0.15);
-        border-radius: 3px;
-        padding: 0.2em 0.4em;
-        border-radius: 3px;
-        font-size: 85%;
-        tab-size: 2;
-      }
-
-      code {
-        color: #eb5757;
-      }
-
-      .code {
-        padding: 1.5em 1em;
-      }
-
-      .code-wrap {
-        white-space: pre-wrap;
-        word-break: break-all;
-      }
-
-      .code > code {
-        background: none;
-        padding: 0;
-        font-size: 100%;
-        color: inherit;
-      }
-
-      blockquote {
-        font-size: 1.25em;
-        margin: 1em 0;
-        padding-left: 1em;
-        border-left: 3px solid rgb(55, 53, 47);
-      }
-
-      .bookmark {
-        text-decoration: none;
-        max-height: 8em;
-        padding: 0;
-        display: flex;
-        width: 100%;
-        align-items: stretch;
-      }
-
-      .bookmark-title {
-        font-size: 0.85em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 1.75em;
-        white-space: nowrap;
-      }
-
-      .bookmark-text {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .bookmark-info {
-        flex: 4 1 180px;
-        padding: 12px 14px 14px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .bookmark-image {
-        width: 33%;
-        flex: 1 1 180px;
-        display: block;
-        position: relative;
-        object-fit: cover;
-        border-radius: 1px;
-      }
-
-      .bookmark-description {
-        color: rgba(55, 53, 47, 0.6);
-        font-size: 0.75em;
-        overflow: hidden;
-        max-height: 4.5em;
-        word-break: break-word;
-      }
-
-      .bookmark-href {
-        font-size: 0.75em;
-        margin-top: 0.25em;
-      }
-
-      .sans {
-        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
-          "Segoe UI Emoji", "Segoe UI Symbol";
-      }
-      .code {
-        font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono",
-          "Liberation Mono", Courier, monospace;
-      }
-      .serif {
-        font-family: Lyon-Text, Georgia, ui-serif, serif;
-      }
-      .mono {
-        font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
-      }
-      .pdf .sans {
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
-          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
-          "Noto Sans CJK JP";
-      }
-      .pdf:lang(zh-CN) .sans {
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
-          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
-          "Noto Sans CJK SC";
-      }
-      .pdf:lang(zh-TW) .sans {
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
-          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
-          "Noto Sans CJK TC";
-      }
-      .pdf:lang(ko-KR) .sans {
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
-          "Segoe UI Emoji", "Segoe UI Symbol", "Twemoji", "Noto Color Emoji",
-          "Noto Sans CJK KR";
-      }
-      .pdf .code {
-        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
-          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
-          "Noto Color Emoji", "Noto Sans Mono CJK JP";
-      }
-      .pdf:lang(zh-CN) .code {
-        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
-          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
-          "Noto Color Emoji", "Noto Sans Mono CJK SC";
-      }
-      .pdf:lang(zh-TW) .code {
-        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
-          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
-          "Noto Color Emoji", "Noto Sans Mono CJK TC";
-      }
-      .pdf:lang(ko-KR) .code {
-        font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas,
-          "PT Mono", "Liberation Mono", Courier, monospace, "Twemoji",
-          "Noto Color Emoji", "Noto Sans Mono CJK KR";
-      }
-      .pdf .serif {
-        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
-          "Noto Color Emoji", "Noto Serif CJK JP";
-      }
-      .pdf:lang(zh-CN) .serif {
-        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
-          "Noto Color Emoji", "Noto Serif CJK SC";
-      }
-      .pdf:lang(zh-TW) .serif {
-        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
-          "Noto Color Emoji", "Noto Serif CJK TC";
-      }
-      .pdf:lang(ko-KR) .serif {
-        font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, "Twemoji",
-          "Noto Color Emoji", "Noto Serif CJK KR";
-      }
-      .pdf .mono {
-        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
-          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK JP";
-      }
-      .pdf:lang(zh-CN) .mono {
-        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
-          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK SC";
-      }
-      .pdf:lang(zh-TW) .mono {
-        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
-          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK TC";
-      }
-      .pdf:lang(ko-KR) .mono {
-        font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace,
-          "Twemoji", "Noto Color Emoji", "Noto Sans Mono CJK KR";
-      }
-      .highlight-default {
-        color: rgba(55, 53, 47, 1);
-      }
-      .highlight-gray {
-        color: rgba(120, 119, 116, 1);
-        fill: rgba(120, 119, 116, 1);
-      }
-      .highlight-brown {
-        color: rgba(159, 107, 83, 1);
-        fill: rgba(159, 107, 83, 1);
-      }
-      .highlight-orange {
-        color: rgba(217, 115, 13, 1);
-        fill: rgba(217, 115, 13, 1);
-      }
-      .highlight-yellow {
-        color: rgba(203, 145, 47, 1);
-        fill: rgba(203, 145, 47, 1);
-      }
-      .highlight-teal {
-        color: rgba(68, 131, 97, 1);
-        fill: rgba(68, 131, 97, 1);
-      }
-      .highlight-blue {
-        color: rgba(51, 126, 169, 1);
-        fill: rgba(51, 126, 169, 1);
-      }
-      .highlight-purple {
-        color: rgba(144, 101, 176, 1);
-        fill: rgba(144, 101, 176, 1);
-      }
-      .highlight-pink {
-        color: rgba(193, 76, 138, 1);
-        fill: rgba(193, 76, 138, 1);
-      }
-      .highlight-red {
-        color: rgba(212, 76, 71, 1);
-        fill: rgba(212, 76, 71, 1);
-      }
-      .highlight-gray_background {
-        background: rgba(241, 241, 239, 1);
-      }
-      .highlight-brown_background {
-        background: rgba(244, 238, 238, 1);
-      }
-      .highlight-orange_background {
-        background: rgba(251, 236, 221, 1);
-      }
-      .highlight-yellow_background {
-        background: rgba(251, 243, 219, 1);
-      }
-      .highlight-teal_background {
-        background: rgba(237, 243, 236, 1);
-      }
-      .highlight-blue_background {
-        background: rgba(231, 243, 248, 1);
-      }
-      .highlight-purple_background {
-        background: rgba(244, 240, 247, 0.8);
-      }
-      .highlight-pink_background {
-        background: rgba(249, 238, 243, 0.8);
-      }
-      .highlight-red_background {
-        background: rgba(253, 235, 236, 1);
-      }
-      .block-color-default {
-        color: inherit;
-        fill: inherit;
-      }
-      .block-color-gray {
-        color: rgba(120, 119, 116, 1);
-        fill: rgba(120, 119, 116, 1);
-      }
-      .block-color-brown {
-        color: rgba(159, 107, 83, 1);
-        fill: rgba(159, 107, 83, 1);
-      }
-      .block-color-orange {
-        color: rgba(217, 115, 13, 1);
-        fill: rgba(217, 115, 13, 1);
-      }
-      .block-color-yellow {
-        color: rgba(203, 145, 47, 1);
-        fill: rgba(203, 145, 47, 1);
-      }
-      .block-color-teal {
-        color: rgba(68, 131, 97, 1);
-        fill: rgba(68, 131, 97, 1);
-      }
-      .block-color-blue {
-        color: rgba(51, 126, 169, 1);
-        fill: rgba(51, 126, 169, 1);
-      }
-      .block-color-purple {
-        color: rgba(144, 101, 176, 1);
-        fill: rgba(144, 101, 176, 1);
-      }
-      .block-color-pink {
-        color: rgba(193, 76, 138, 1);
-        fill: rgba(193, 76, 138, 1);
-      }
-      .block-color-red {
-        color: rgba(212, 76, 71, 1);
-        fill: rgba(212, 76, 71, 1);
-      }
-      .block-color-gray_background {
-        background: rgba(241, 241, 239, 1);
-      }
-      .block-color-brown_background {
-        background: rgba(244, 238, 238, 1);
-      }
-      .block-color-orange_background {
-        background: rgba(251, 236, 221, 1);
-      }
-      .block-color-yellow_background {
-        background: rgba(251, 243, 219, 1);
-      }
-      .block-color-teal_background {
-        background: rgba(237, 243, 236, 1);
-      }
-      .block-color-blue_background {
-        background: rgba(231, 243, 248, 1);
-      }
-      .block-color-purple_background {
-        background: rgba(244, 240, 247, 0.8);
-      }
-      .block-color-pink_background {
-        background: rgba(249, 238, 243, 0.8);
-      }
-      .block-color-red_background {
-        background: rgba(253, 235, 236, 1);
-      }
-      .select-value-color-pink {
-        background-color: rgba(245, 224, 233, 1);
-      }
-      .select-value-color-purple {
-        background-color: rgba(232, 222, 238, 1);
-      }
-      .select-value-color-green {
-        background-color: rgba(219, 237, 219, 1);
-      }
-      .select-value-color-gray {
-        background-color: rgba(227, 226, 224, 1);
-      }
-      .select-value-color-opaquegray {
-        background-color: rgba(255, 255, 255, 0.0375);
-      }
-      .select-value-color-orange {
-        background-color: rgba(250, 222, 201, 1);
-      }
-      .select-value-color-brown {
-        background-color: rgba(238, 224, 218, 1);
-      }
-      .select-value-color-red {
-        background-color: rgba(255, 226, 221, 1);
-      }
-      .select-value-color-yellow {
-        background-color: rgba(253, 236, 200, 1);
-      }
-      .select-value-color-blue {
-        background-color: rgba(211, 229, 239, 1);
-      }
-
-      .checkbox {
-        display: inline-flex;
-        vertical-align: text-bottom;
-        width: 16;
-        height: 16;
-        background-size: 16px;
-        margin-left: 2px;
-        margin-right: 5px;
-      }
-
-      .checkbox-on {
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-      }
-
-      .checkbox-off {
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-      }
-    </style>
-  </head>
-  <body>
-    <article id="dd2dfbd0-795a-40e9-a6e4-d962898dffba" class="page sans">
-      <header>
-        <img
-          class="page-cover-image"
-          src="23T2%20Tournament%20Rules%20dd2dfbd0795a40e9a6e4d962898dffba/354FCF87-F5FC-4CDF-926E-F603EB607800.jpeg"
-          style="object-position: center 50%"
-        />
-        <div class="page-header-icon page-header-icon-with-cover">
-          <img
-            class="icon"
-            src="23T2%20Tournament%20Rules%20dd2dfbd0795a40e9a6e4d962898dffba/Logo_(600px).png"
-          />
-        </div>
-        <h1 class="page-title">23T2 Tournament Rules</h1>
-      </header>
-      <div class="page-body">
-        <figure
-          class="block-color-teal_background callout"
-          style="white-space: pre-wrap; display: flex"
-          id="e5cd5e03-01a5-4bd0-a02e-9e304e459c57"
-        >
-          <div style="font-size: 1.5em">
-            <img
-              class="icon"
-              src="https://www.notion.so/icons/bookmark_gray.svg"
-            />
-          </div>
-          <div style="width: 100%">
-            Drafted for UNSW Rhythm Game Society By Hari Pramod (Secretary)
-            Hehe#6969, and Ryan Chen (Events Director) 律化娜#6912 .
-          </div>
-        </figure>
-        <h1 id="a72f0173-262e-45b5-9f17-9bd31b720d30" class="">Legend</h1>
-        <ul id="f536a2ce-f03c-4b0a-aaac-e7bc7dbf43bf" class="bulleted-list">
-          <li style="list-style-type: disc">TAG4 - Warmup</li>
-        </ul>
-        <h2 id="01196c34-28fe-4619-ad03-bcb07cdd912a" class="">Difficulty: </h2>
-        <p id="98539f40-9ea2-46b8-bd06-828629ae49da" class="">
-          The tournament will be available in two difficulty brackets
-        </p>
-        <ul id="48c2fb97-d605-4c37-8ca0-3ec0f6a82256" class="bulleted-list">
-          <li style="list-style-type: disc">HARD [3.6 - 5.0⭐️]</li>
-        </ul>
-        <ul id="c195eb61-f73d-4dcb-814e-65da69724f66" class="bulleted-list">
-          <li style="list-style-type: disc">EXPERT [5.0 - 6.6⭐️].</li>
-        </ul>
-        <h2 id="7efe1946-4e8d-4507-ae7b-664b196da31e" class="">
-          <strong>Map Pool:</strong>
-        </h2>
-        <p id="1961a9d1-fbbf-4c49-8203-c188a30513ce" class="">
-          The Structure of the Map Pool is as follows:
-        </p>
-        <table id="7c680e04-eef6-4331-a67a-855f68701150" class="simple-table">
-          <thead class="simple-table-header">
-            <tr id="f6b2254a-4849-42f4-afc1-7351c2c9fddc">
-              <th
-                id="~OtR"
-                class="simple-table-header-color simple-table-header"
-              >
-                Number of Maps
-              </th>
-              <th
-                id="MYNX"
-                class="simple-table-header-color simple-table-header"
-              >
-                Bracket
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="c89f0293-8b3a-4c40-9eeb-18c7e9e79309">
-              <td id="~OtR" class="">6</td>
-              <td id="MYNX" class="">No Mod</td>
-            </tr>
-            <tr id="578e4171-c497-4fa2-b6e3-427c5032c007">
-              <td id="~OtR" class="">6</td>
-              <td id="MYNX" class="">Hidden</td>
-            </tr>
-            <tr id="3947cda4-672b-4273-9840-67846c5a4944">
-              <td id="~OtR" class="">6</td>
-              <td id="MYNX" class="">HardRock</td>
-            </tr>
-            <tr id="c8734dbd-a8d4-40d8-b0d5-0302839d1618">
-              <td id="~OtR" class="">6</td>
-              <td id="MYNX" class="">Double Time</td>
-            </tr>
-            <tr id="c2221f36-fccd-435f-b93c-81977a3a6494">
-              <td id="~OtR" class="">6</td>
-              <td id="MYNX" class="">Force Mod</td>
-            </tr>
-            <tr id="28d8065b-b536-485f-9c1c-f4dbc4807679">
-              <td id="~OtR" class="">1</td>
-              <td id="MYNX" class="">Tie Breaker</td>
-            </tr>
-          </tbody>
-        </table>
-        <p id="8eb8832b-9551-4942-bcd2-fb5cc2cd8da8" class="">
-          Total Number of Maps: 31
-        </p>
-        <p id="57d3f22a-9851-486a-9105-a8041c743037" class="">
-          <strong>Additional Rules:</strong>
-        </p>
-        <ul id="e9512265-bd7f-4a0e-9491-773a88c9cfe6" class="bulleted-list">
-          <li style="list-style-type: disc">
-            <strong>Force Mod</strong>: This bracket is played with ForceMod
-            activated i.e every player must pick 1 or more mods from either
-            Hidden or Hardrock or Flashlight.
-          </li>
-        </ul>
-        <ul id="d14799ba-9458-4ca2-a25c-bd5fd8197bba" class="bulleted-list">
-          <li style="list-style-type: disc">
-            <strong>Tie Breaker</strong> is played with ForceMod conditions but
-            it is not necessary for players to enable mods.
-          </li>
-        </ul>
-        <h2 id="6a4f7406-9906-405b-b4b3-2cb04e1982b0" class="">Maps:</h2>
-        <p id="0eac26fb-7e7d-4911-a9ab-355d99e5e297" class="">
-          Maps are chosen with the following factors taken into consideration:
-        </p>
-        <ul id="66248e4e-8a6b-4e12-b7e8-f43c2a0bec2c" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Maps suggested by applicants in the application form
-          </li>
-        </ul>
-        <ul id="21f611ef-4f3f-441e-8e06-c737d7750eb8" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Maps suggested by Volunteers and Tournament Staff
-          </li>
-        </ul>
-        <ul id="0566fa92-bddd-48d8-a141-3277a0748563" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Popular Maps at the time of the tournament
-          </li>
-        </ul>
-        <ul id="02236742-e248-4302-acf7-50130bee536a" class="bulleted-list">
-          <li style="list-style-type: disc">Popular / New Anime songs</li>
-        </ul>
-        <h2 id="4a96f519-8479-40cc-b56b-8fc180f502aa" class="">
-          <strong>Team Structure:</strong>
-        </h2>
-        <p id="5402f647-0590-4e9e-a570-1e487142ef8c" class="">
-          The team structure for both brackets is as follows:
-        </p>
-        <table id="ca0649b3-7eb2-4647-b712-41250bbd5e56" class="simple-table">
-          <tbody>
-            <tr id="7c8f8e81-9f92-4b2c-bc6f-eb678c3f8f83">
-              <th
-                id="xEme"
-                class="simple-table-header-color simple-table-header"
-              >
-                Team Size
-              </th>
-              <td id="|R`n" class="">6 ≤ size &lt; 12</td>
-            </tr>
-            <tr id="39c71ce2-a014-4c44-8e05-4f82f9799abc">
-              <th
-                id="xEme"
-                class="simple-table-header-color simple-table-header"
-              >
-                Active Players
-              </th>
-              <td id="|R`n" class="">4</td>
-            </tr>
-            <tr id="3b75eb72-172e-4cb8-9d05-6d9742c22cea">
-              <th
-                id="xEme"
-                class="simple-table-header-color simple-table-header"
-              >
-                Bench
-              </th>
-              <td id="|R`n" class="">2 ≤ bench &lt; 8</td>
-            </tr>
-          </tbody>
-        </table>
-        <p id="056525ea-5fef-4f79-a683-b5a1e8f3385a" class="">
-          <strong>Additional Rules:</strong>
-        </p>
-        <ul id="0d86574c-e382-493d-b035-b671ea6ebe25" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Teams are allowed to switch players between active and bench during
-            the breaks provided between each song.
-          </li>
-        </ul>
-        <ul id="22afd266-f6ce-4fe5-9ed3-7f087a2f81a6" class="bulleted-list">
-          <li style="list-style-type: disc">
-            If a player is absent on the day and the team size does not have a
-            minimum of 4 players then the team is disqualified.
-            <ul id="f43dcbf4-13cd-4f18-8aea-56c299281068" class="bulleted-list">
-              <li style="list-style-type: circle">
-                If there are more than 2 teams participating then the &lt; 4
-                players team will be added to the bench of either remaining
-                valid teams.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="7b119e58-2f60-450a-8a28-519522b4af52" class="bulleted-list">
-          <li style="list-style-type: disc">
-            If a team exceeds 12 players then it is to be divided into 2
-            seperate teams and the tournament structure changes.
-          </li>
-        </ul>
-        <ul id="bd898120-d026-4f55-947f-33b6679a2f28" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Each Team must elect 1 leader to roll and message the staff on which
-            map is to be picked or banned.
-            <ul id="bd8088af-5d8f-475c-bcc2-675667535e61" class="bulleted-list">
-              <li style="list-style-type: circle">
-                In order to reduce chances of confusion between staff and
-                players during the match.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <h2 id="5368a555-438e-43a5-8f1f-e5d5764f1302" class="">
-          <strong>Score:</strong>
-        </h2>
-        <ul id="59f18a23-42d9-4d56-87ad-c4507ee28063" class="bulleted-list">
-          <li style="list-style-type: disc">
-            player&#x27;s score will be calculated using
-            <strong>score V2</strong>.
-          </li>
-        </ul>
-        <ul id="4fe10a4a-c328-4b36-a0b2-5b181e303bae" class="bulleted-list">
-          <li style="list-style-type: disc">
-            team’s wins will be evaluated using the
-            <strong>Team VS</strong> mode in a multiplayer room.
-          </li>
-        </ul>
-        <ul id="a9ebf9b6-8c80-4f87-87e8-ef9da916ef19" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Players will also have to use the <strong>NoFail</strong> mod during
-            the course of every match
-            <ul id="2be95e9b-24c9-4d62-97eb-06977ed7861f" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Clarification: This does not affect the score in V2
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <h2 id="f2552ac6-8a24-43d3-9423-6baacc585077" class="">
-          <strong>Picks and Bans:</strong>
-        </h2>
-        <ul id="609fe9a9-c1c0-44c4-b59f-ceec898dd6b7" class="bulleted-list">
-          <li style="list-style-type: disc">
-            The first map is picked by the team that wins the warmup game at the
-            start of the tournament.
-            <ul id="628dafe9-4e4d-4faa-81d7-f152fafd0b02" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Winners can decide whether they want to pick or ban.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="d2d97d57-8fa1-42a9-aa4e-f882160d6102" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Teams Leaders will run a <code>!roll 100</code> between maps,
-            <strong>AFTER</strong> the first map, whichever team scores higher
-            bans 1 from the bracket, and the other team leader picks the next
-            map.
-          </li>
-        </ul>
-        <ul id="19748e3f-afca-45bd-9aaa-a7ab8b65ad39" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Each team will be allowed to ban <strong>1 map</strong> per game
-            (not including Tiebreaker).
-          </li>
-        </ul>
-        <ul id="61112e23-1716-42a4-88cf-e0adb5f1c89c" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Long break will be held midway through the game for a duration of 15
-            minutes.
-          </li>
-        </ul>
-        <ul id="1efe3ecd-138d-4d26-9588-6d995bdd348d" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Midway is defined as
-            <figure id="baa4c860-5fa5-45fd-85a3-a1bcc4424bcb" class="equation">
-              <style>
-                @import url("https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css");
-              </style>
-              <div class="equation-container">
-                <span class="katex-display"
-                  ><span class="katex"
-                    ><span class="katex-mathml"
-                      ><math
-                        xmlns="http://www.w3.org/1998/Math/MathML"
-                        display="block"
-                        ><semantics
-                          ><mtable
-                            rowspacing="0.2500em"
-                            columnalign="right left"
-                            columnspacing="0em"
-                            ><mtr
-                              ><mtd
-                                ><mstyle scriptlevel="0" displaystyle="true"
-                                  ><mtext>Midway</mtext></mstyle
-                                ></mtd
-                              ><mtd
-                                ><mstyle scriptlevel="0" displaystyle="true"
-                                  ><mrow
-                                    ><mrow></mrow><mo>=</mo
-                                    ><mfrac
-                                      ><mrow
-                                        ><mn>31</mn><mtext> maps </mtext
-                                        ><mo>−</mo><mn>10</mn
-                                        ><mtext> round bans </mtext><mo>−</mo
-                                        ><mn>10</mn
-                                        ><mtext> unplayed maps </mtext><mo>−</mo
-                                        ><mn>1</mn
-                                        ><mtext> tiebreaker</mtext></mrow
-                                      ><mn>2</mn></mfrac
-                                    ></mrow
-                                  ></mstyle
-                                ></mtd
-                              ></mtr
-                            ><mtr
-                              ><mtd
-                                ><mstyle scriptlevel="0" displaystyle="true"
-                                  ><mrow></mrow></mstyle></mtd
-                              ><mtd
-                                ><mstyle scriptlevel="0" displaystyle="true"
-                                  ><mrow
-                                    ><mrow></mrow><mo>=</mo><mn>5</mn
-                                    ><mtext> maps </mtext></mrow
-                                  ></mstyle
-                                ></mtd
-                              ></mtr
-                            ></mtable
-                          ><annotation encoding="application/x-tex"
-                            >\begin{split} \textrm{Midway} &amp; = \frac{31
-                            \textrm{ maps } - 10 \textrm{ round bans } - 10
-                            \textrm{ unplayed maps } - 1\textrm{ tiebreaker}
-                            }{2} \\ &amp; = 5 \textrm{ maps }
-                            \end{split}</annotation
-                          ></semantics
-                        ></math
-                      ></span
-                    ><span class="katex-html" aria-hidden="true"
-                      ><span class="base"
-                        ><span
-                          class="strut"
-                          style="
-                            height: 3.8574400000000004em;
-                            vertical-align: -1.6787200000000002em;
-                          "
-                        ></span
-                        ><span class="mord"
-                          ><span class="mtable"
-                            ><span class="col-align-r"
-                              ><span class="vlist-t vlist-t2"
-                                ><span class="vlist-r"
-                                  ><span class="vlist" style="height: 2.17872em"
-                                    ><span style="top: -4.17872em"
-                                      ><span
-                                        class="pstrut"
-                                        style="height: 3.3714399999999998em"
-                                      ></span
-                                      ><span class="mord"
-                                        ><span class="mord text"
-                                          ><span class="mord textrm"
-                                            >Midway</span
-                                          ></span
-                                        ></span
-                                      ></span
-                                    ><span style="top: -2.3527199999999997em"
-                                      ><span
-                                        class="pstrut"
-                                        style="height: 3.3714399999999998em"
-                                      ></span
-                                      ><span class="mord"></span></span></span
-                                  ><span class="vlist-s">​</span></span
-                                ><span class="vlist-r"
-                                  ><span
-                                    class="vlist"
-                                    style="height: 1.6787200000000002em"
-                                    ><span></span></span></span></span></span
-                            ><span class="col-align-l"
-                              ><span class="vlist-t vlist-t2"
-                                ><span class="vlist-r"
-                                  ><span class="vlist" style="height: 2.17872em"
-                                    ><span style="top: -4.17872em"
-                                      ><span
-                                        class="pstrut"
-                                        style="height: 3.3714399999999998em"
-                                      ></span
-                                      ><span class="mord"
-                                        ><span class="mord"></span
-                                        ><span
-                                          class="mspace"
-                                          style="
-                                            margin-right: 0.2777777777777778em;
-                                          "
-                                        ></span
-                                        ><span class="mrel">=</span
-                                        ><span
-                                          class="mspace"
-                                          style="
-                                            margin-right: 0.2777777777777778em;
-                                          "
-                                        ></span
-                                        ><span class="mord"
-                                          ><span
-                                            class="mopen nulldelimiter"
-                                          ></span
-                                          ><span class="mfrac"
-                                            ><span class="vlist-t vlist-t2"
-                                              ><span class="vlist-r"
-                                                ><span
-                                                  class="vlist"
-                                                  style="
-                                                    height: 1.3714399999999998em;
-                                                  "
-                                                  ><span style="top: -2.314em"
-                                                    ><span
-                                                      class="pstrut"
-                                                      style="height: 3em"
-                                                    ></span
-                                                    ><span class="mord"
-                                                      ><span class="mord"
-                                                        >2</span
-                                                      ></span
-                                                    ></span
-                                                  ><span style="top: -3.23em"
-                                                    ><span
-                                                      class="pstrut"
-                                                      style="height: 3em"
-                                                    ></span
-                                                    ><span
-                                                      class="frac-line"
-                                                      style="
-                                                        border-bottom-width: 0.04em;
-                                                      "
-                                                    ></span></span
-                                                  ><span style="top: -3.677em"
-                                                    ><span
-                                                      class="pstrut"
-                                                      style="height: 3em"
-                                                    ></span
-                                                    ><span class="mord"
-                                                      ><span class="mord"
-                                                        >31</span
-                                                      ><span class="mord text"
-                                                        ><span
-                                                          class="mord textrm"
-                                                          > maps </span
-                                                        ></span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mbin"
-                                                        >−</span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mord"
-                                                        >10</span
-                                                      ><span class="mord text"
-                                                        ><span
-                                                          class="mord textrm"
-                                                          > round bans </span
-                                                        ></span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mbin"
-                                                        >−</span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mord"
-                                                        >10</span
-                                                      ><span class="mord text"
-                                                        ><span
-                                                          class="mord textrm"
-                                                          > unplayed maps </span
-                                                        ></span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mbin"
-                                                        >−</span
-                                                      ><span
-                                                        class="mspace"
-                                                        style="
-                                                          margin-right: 0.2222222222222222em;
-                                                        "
-                                                      ></span
-                                                      ><span class="mord"
-                                                        >1</span
-                                                      ><span class="mord text"
-                                                        ><span
-                                                          class="mord textrm"
-                                                          > tiebreaker</span
-                                                        ></span
-                                                      ></span
-                                                    ></span
-                                                  ></span
-                                                ><span class="vlist-s"
-                                                  >​</span
-                                                ></span
-                                              ><span class="vlist-r"
-                                                ><span
-                                                  class="vlist"
-                                                  style="height: 0.686em"
-                                                  ><span></span></span></span></span></span
-                                          ><span
-                                            class="mclose nulldelimiter"
-                                          ></span></span></span></span
-                                    ><span style="top: -2.3527199999999997em"
-                                      ><span
-                                        class="pstrut"
-                                        style="height: 3.3714399999999998em"
-                                      ></span
-                                      ><span class="mord"
-                                        ><span class="mord"></span
-                                        ><span
-                                          class="mspace"
-                                          style="
-                                            margin-right: 0.2777777777777778em;
-                                          "
-                                        ></span
-                                        ><span class="mrel">=</span
-                                        ><span
-                                          class="mspace"
-                                          style="
-                                            margin-right: 0.2777777777777778em;
-                                          "
-                                        ></span
-                                        ><span class="mord">5</span
-                                        ><span class="mord text"
-                                          ><span class="mord textrm"
-                                            > maps </span
-                                          ></span
-                                        ></span
-                                      ></span
-                                    ></span
-                                  ><span class="vlist-s">​</span></span
-                                ><span class="vlist-r"
-                                  ><span
-                                    class="vlist"
-                                    style="height: 1.6787200000000002em"
-                                    ><span></span></span></span></span></span></span></span></span></span></span
-                ></span>
-              </div>
-            </figure>
-          </li>
-        </ul>
-        <ul id="3e19fb91-19d1-4204-b027-5eba0c14374d" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Teams are allowed 2 minutes to pick/ban the next map,
-            <strong>AND</strong> 2 more minutes to (optionally) switch active
-            with bench players.
-          </li>
-        </ul>
-        <h2 id="81592ade-b359-4879-8ce8-6f63026e0f53" class="">
-          <span style="border-bottom: 0.05em solid">Clarifications:</span>
-        </h2>
-        <ul id="889238cb-ba75-43e8-85f2-619597aad586" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Incase an active player disconnects between matches they will be
-            allowed 10 minutes to rejoin.
-            <ul id="a7d7f6ad-15e3-488e-b01e-ccd23c103dba" class="bulleted-list">
-              <li style="list-style-type: circle">
-                If there are no bench players the game will end and the team
-                will be disqualified if they are not able to join back within 10
-                minutes.
-              </li>
-            </ul>
-            <ul id="3036c526-3b51-4097-9c6e-19b272108608" class="bulleted-list">
-              <li style="list-style-type: circle">
-                If the team has bench players the game will go on with a bench
-                player put in an active player position.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="67a03bd0-6eb6-447f-8eb8-cf6639feb24d" class="bulleted-list">
-          <li style="list-style-type: disc">
-            If a player disconnects during a match and there is a valid reason,
-            both teams will have to play the map again within 10 minutes of
-            waiting for the player
-            <ul id="7fe06de6-87a4-42b0-a3f0-3239f358ae7d" class="bulleted-list">
-              <li style="list-style-type: circle">
-                if the player is unable to rejoin within 10 minutes a bench
-                player will be chosen to play in their place.
-              </li>
-            </ul>
-            <ul id="a5ae70e8-b80a-47a3-995b-fdb3abf0e3d1" class="bulleted-list">
-              <li style="list-style-type: circle">
-                if there are no bench players, there will be a total wait time
-                of 15 minutes instead
-                <ul
-                  id="dc3655cd-59e5-4dd6-b335-7563ff18160f"
-                  class="bulleted-list"
-                >
-                  <li style="list-style-type: square">
-                    if the player is still unable to join the match will end and
-                    the team will be disqualified.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="14f235ae-a373-4098-aa21-650077d25abd" class="bulleted-list">
-          <li style="list-style-type: disc">
-            If on the tournament day a team is unable to gather at least 4
-            active players the match will be rescheduled to a later date.
-          </li>
-        </ul>
-        <ul id="61185118-f94e-4770-8cad-2e6cb38fc1d7" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Teams will be allowed waiting time of up to 10 minutes before they
-            start of the game to gather players and plan.
-          </li>
-        </ul>
-        <ul id="16b81a7b-84b6-4c3a-ad3f-5c5cf8123181" class="bulleted-list">
-          <li style="list-style-type: disc">
-            If any incident occurs outside the defined cases above, STAFF will
-            be allowed to reach a decision on the matter based on their judgment
-            of the situation at the time.
-            <ul id="21ba2e59-01e5-4249-8ba6-dabb69fac557" class="bulleted-list">
-              <li style="list-style-type: circle">
-                This decision will be considered final.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <hr id="889c889a-685e-4755-a6c3-2fcd108afb8e" />
-        <h1 id="11298156-7246-4ccd-a26c-1ef8d20fdbc4" class="">
-          Role of Volunteers and Staff
-        </h1>
-        <figure
-          class="block-color-teal_background callout"
-          style="white-space: pre-wrap; display: flex"
-          id="0b1d3797-4fda-43c5-af9f-75960efe2303"
-        >
-          <div style="font-size: 1.5em"><span class="icon">📌</span></div>
-          <div style="width: 100%">TO DO</div>
-        </figure>
-        <h1 id="d1a1afc6-f6bc-4779-bcca-790ecde48a13" class="">
-          Summary of changes
-        </h1>
-        <ul id="a4a898b6-8b81-4e8b-83f0-a6fd978c31d9" class="bulleted-list">
-          <li style="list-style-type: disc">
-            HARD [3.6 - 5.0⭐️]
-            <ul id="b4a1e37c-50a8-40f2-ba0d-41a18cab3212" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Increased lower limit from 2.6 → 3.6⭐️
-              </li>
-            </ul>
-            <ul id="ece95aac-fe9d-470a-bea1-976553ccce8d" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Increased upper limit from 4.6 → 5.0⭐
-              </li>
-            </ul>
-            <ul id="bd9ad8fd-08bf-4612-b7a1-71856b64b539" class="bulleted-list">
-              <li style="list-style-type: circle">
-                <strong>Reason:</strong> Maps that were chosen didn’t really go
-                below 3.6 stars previously so the lower limit was redundant.
-              </li>
-            </ul>
-            <ul id="99e1df84-cd87-4cb5-a4b2-e683bf34a598" class="bulleted-list">
-              <li style="list-style-type: circle">5 is so funny and cool 😎</li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="aab3dbaf-2626-4cbe-a704-73cbcc02204a" class="bulleted-list">
-          <li style="list-style-type: disc">
-            EXPERT [5.0 - 6.6⭐️].
-            <ul id="dfd6aea7-e933-4df0-86a2-c8deba7511f5" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Lowered upper limit from 7.3 → 6.6⭐️
-              </li>
-            </ul>
-            <ul id="fc6a1c74-b67f-4a58-8c2e-975c1972fc76" class="bulleted-list">
-              <li style="list-style-type: circle">
-                <strong>Reason: </strong>To make maps more S-able, as it is a
-                better look for the competitions if scores range between
-                <strong>A</strong> to <strong>S</strong> rather than
-                <strong>C</strong> to <strong>S</strong>.
-              </li>
-            </ul>
-            <ul id="d864f15b-a943-49b7-9808-6910cbf9bb79" class="bulleted-list">
-              <li style="list-style-type: circle">5 is so funny and cool 😎</li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="17ee22a3-2bfe-4863-9687-1009ce5fe958" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Maps
-            <ul id="8d59fdfc-1091-4adb-a2e7-2125b1c08f25" class="bulleted-list">
-              <li style="list-style-type: circle">
-                New total map pool size of 31 to increase available choice so
-                the match does not get boring.
-              </li>
-            </ul>
-            <ul id="2bc0466d-4411-4ad8-831a-cf69ce7a6893" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Defined multiple methods of how maps will be picked
-              </li>
-            </ul>
-            <ul id="69c8e938-6472-4d61-ba81-4eda2bacdb76" class="bulleted-list">
-              <li style="list-style-type: circle">
-                introduced the role of volunteer and tournament staff
-              </li>
-            </ul>
-            <ul id="f01144a4-5003-403d-99d7-1da9fead45e1" class="bulleted-list">
-              <li style="list-style-type: circle">
-                <strong>Reason:</strong> So that everyone is aware of how the
-                map pool is decided this time, and can raise objections and
-                opinions on the map pool depending on these criteria.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="1bb79635-c707-4128-8a37-31fb33ea68e9" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Teams
-            <ul id="b4bdd610-7e84-4549-a32d-3df14a7f0215" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Defined the role of Team Leader
-                <ul
-                  id="b9df7c30-6251-4ba8-8ad5-d41d5b78616c"
-                  class="bulleted-list"
-                >
-                  <li style="list-style-type: square">
-                    <strong>Reason:</strong> it was not in the rules last time
-                    but still implemented anyways.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul id="5e575799-cc28-4ac6-90c7-38cfd45fb077" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Set a minimum team size of 6
-                <ul
-                  id="8a577c46-bd52-489f-96cf-422d1a60ad0e"
-                  class="bulleted-list"
-                >
-                  <li style="list-style-type: square">
-                    <strong>Reason: </strong> so that there are at least 2 bench
-                    players.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul id="3bb43267-35d6-411f-a23f-f627306d5ec7" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Also made the rules around team sizes more defined in this
-                version
-                <ul
-                  id="df220d07-631f-45a1-b5f4-bc10c160ecfc"
-                  class="bulleted-list"
-                >
-                  <li style="list-style-type: square">
-                    <strong>Reason:</strong> helps avoid confusion.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="7c5ebcca-e52a-4e39-925a-51e0cec91c75" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Picks and Bans
-            <ul id="27cf5224-de0c-411d-96b9-c4d400a23e62" class="bulleted-list">
-              <li style="list-style-type: circle">
-                picks and bans per game instead of once at the start and once
-                midway
-              </li>
-            </ul>
-            <ul id="c176b088-43b2-4840-a036-55d9af693cdd" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Added number limit for <code>!roll</code> between maps
-              </li>
-            </ul>
-            <ul id="992657d4-044a-418d-8fa5-fcff44e5fdd9" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Defined Midway between game
-              </li>
-            </ul>
-            <ul id="3c0d7d31-83d0-4bb3-83a5-6209d3e332ad" class="bulleted-list">
-              <li style="list-style-type: circle">Re-phrased old rules.</li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="53c8dad5-bb8c-41c6-b8c6-2f2e76960618" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Lots of changes to clarifications.
-            <ul id="ca2dcd42-21d3-41b8-83d1-19c1718efcbb" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Made it more defined and removed some redundant cases.
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <hr id="665179b4-762b-435a-b9a0-141928edf210" />
-        <h1 id="9dd6932c-5885-4295-86df-5ff87176ba06" class="">
-          Proposed Changes
-        </h1>
-        <ul id="b52961f9-751f-41b5-8d4f-5fcfd8b9dec0" class="bulleted-list">
-          <li style="list-style-type: disc">
-            more even distribution of map types
-          </li>
-        </ul>
-        <ul id="8e88784c-3134-4242-9696-fb1e8aff3585" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Warmup game mode / category
-            <ul id="0fb1ba8e-a8c4-4066-bc5d-c7663d70e87a" class="bulleted-list">
-              <li style="list-style-type: circle">
-                Whoever wins gets the first pick/ban
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul id="765bebe5-cfb3-4c5a-bb69-535bb4ff8efb" class="bulleted-list">
-          <li style="list-style-type: disc">
-            Include unranked / loved maps as well
-          </li>
-        </ul>
-      </div>
-    </article>
-  </body>
-</html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>23T2 Tournament Rules</title><style>
+  /* cspell:disable-file */
+  /* webkit printing magic: print all background colors */
+  html {
+    -webkit-print-color-adjust: exact;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  @media only screen {
+    body {
+      margin: 2em auto;
+      max-width: 900px;
+      color: rgb(55, 53, 47);
+    }
+  }
+  
+  body {
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  
+  a,
+  a.visited {
+    color: inherit;
+    text-decoration: underline;
+  }
+  
+  .pdf-relative-link-path {
+    font-size: 80%;
+    color: #444;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+  }
+  
+  h1 {
+    font-size: 1.875rem;
+    margin-top: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  
+  .source {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 1.5em;
+    word-break: break-all;
+  }
+  
+  .callout {
+    border-radius: 3px;
+    padding: 1rem;
+  }
+  
+  figure {
+    margin: 1.25em 0;
+    page-break-inside: avoid;
+  }
+  
+  figcaption {
+    opacity: 0.5;
+    font-size: 85%;
+    margin-top: 0.5em;
+  }
+  
+  mark {
+    background-color: transparent;
+  }
+  
+  .indented {
+    padding-left: 1.5em;
+  }
+  
+  hr {
+    background: transparent;
+    display: block;
+    width: 100%;
+    height: 1px;
+    visibility: visible;
+    border: none;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  @media only print {
+    img {
+      max-height: 100vh;
+      object-fit: contain;
+    }
+  }
+  
+  @page {
+    margin: 1in;
+  }
+  
+  .collection-content {
+    font-size: 0.875rem;
+  }
+  
+  .column-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .column {
+    padding: 0 1em;
+  }
+  
+  .column:first-child {
+    padding-left: 0;
+  }
+  
+  .column:last-child {
+    padding-right: 0;
+  }
+  
+  .table_of_contents-item {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    padding: 0.125rem;
+  }
+  
+  .table_of_contents-indent-1 {
+    margin-left: 1.5rem;
+  }
+  
+  .table_of_contents-indent-2 {
+    margin-left: 3rem;
+  }
+  
+  .table_of_contents-indent-3 {
+    margin-left: 4.5rem;
+  }
+  
+  .table_of_contents-link {
+    text-decoration: none;
+    opacity: 0.7;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid rgba(55, 53, 47, 0.09);
+    border-collapse: collapse;
+  }
+  
+  table {
+    border-left: none;
+    border-right: none;
+  }
+  
+  th,
+  td {
+    font-weight: normal;
+    padding: 0.25em 0.5em;
+    line-height: 1.5;
+    min-height: 1.5em;
+    text-align: left;
+  }
+  
+  th {
+    color: rgba(55, 53, 47, 0.6);
+  }
+  
+  ol,
+  ul {
+    margin: 0;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+  }
+  
+  li > ol:first-child,
+  li > ul:first-child {
+    margin-block-start: 0.6em;
+  }
+  
+  ul > li {
+    list-style: disc;
+  }
+  
+  ul.to-do-list {
+    text-indent: -1.7em;
+  }
+  
+  ul.to-do-list > li {
+    list-style: none;
+  }
+  
+  .to-do-children-checked {
+    text-decoration: line-through;
+    opacity: 0.375;
+  }
+  
+  ul.toggle > li {
+    list-style: none;
+  }
+  
+  ul {
+    padding-inline-start: 1.7em;
+  }
+  
+  ul > li {
+    padding-left: 0.1em;
+  }
+  
+  ol {
+    padding-inline-start: 1.6em;
+  }
+  
+  ol > li {
+    padding-left: 0.2em;
+  }
+  
+  .mono ol {
+    padding-inline-start: 2em;
+  }
+  
+  .mono ol > li {
+    text-indent: -0.4em;
+  }
+  
+  .toggle {
+    padding-inline-start: 0em;
+    list-style-type: none;
+  }
+  
+  /* Indent toggle children */
+  .toggle > li > details {
+    padding-left: 1.7em;
+  }
+  
+  .toggle > li > details > summary {
+    margin-left: -1.1em;
+  }
+  
+  .selected-value {
+    display: inline-block;
+    padding: 0 0.5em;
+    background: rgba(206, 205, 202, 0.5);
+    border-radius: 3px;
+    margin-right: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    white-space: nowrap;
+  }
+  
+  .collection-title {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  
+  .simple-table {
+    margin-top: 1em;
+    font-size: 0.875rem;
+    empty-cells: show;
+  }
+  .simple-table td {
+    height: 29px;
+    min-width: 120px;
+  }
+  
+  .simple-table th {
+    height: 29px;
+    min-width: 120px;
+  }
+  
+  .simple-table-header-color {
+    background: rgb(247, 246, 243);
+    color: black;
+  }
+  .simple-table-header {
+    font-weight: 500;
+  }
+  
+  time {
+    opacity: 0.5;
+  }
+  
+  .icon {
+    display: inline-block;
+    max-width: 1.2em;
+    max-height: 1.2em;
+    text-decoration: none;
+    vertical-align: text-bottom;
+    margin-right: 0.5em;
+  }
+  
+  img.icon {
+    border-radius: 3px;
+  }
+  
+  .user-icon {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+  }
+  
+  .user-icon-inner {
+    font-size: 0.8em;
+  }
+  
+  .text-icon {
+    border: 1px solid #000;
+    text-align: center;
+  }
+  
+  .page-cover-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    max-height: 30vh;
+  }
+  
+  .page-header-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .page-header-icon-with-cover {
+    margin-top: -0.72em;
+    margin-left: 0.07em;
+  }
+  
+  .page-header-icon img {
+    border-radius: 3px;
+  }
+  
+  .link-to-page {
+    margin: 1em 0;
+    padding: 0;
+    border: none;
+    font-weight: 500;
+  }
+  
+  p > .user {
+    opacity: 0.5;
+  }
+  
+  td > .user,
+  td > time {
+    white-space: nowrap;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 0.6em;
+    vertical-align: middle;
+  }
+  
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .image {
+    border: none;
+    margin: 1.5em 0;
+    padding: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+  
+  .code,
+  code {
+    background: rgba(135, 131, 120, 0.15);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 85%;
+    tab-size: 2;
+  }
+  
+  code {
+    color: #eb5757;
+  }
+  
+  .code {
+    padding: 1.5em 1em;
+  }
+  
+  .code-wrap {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  
+  .code > code {
+    background: none;
+    padding: 0;
+    font-size: 100%;
+    color: inherit;
+  }
+  
+  blockquote {
+    font-size: 1.25em;
+    margin: 1em 0;
+    padding-left: 1em;
+    border-left: 3px solid rgb(55, 53, 47);
+  }
+  
+  .bookmark {
+    text-decoration: none;
+    max-height: 8em;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .bookmark-title {
+    font-size: 0.85em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.75em;
+    white-space: nowrap;
+  }
+  
+  .bookmark-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bookmark-info {
+    flex: 4 1 180px;
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bookmark-image {
+    width: 33%;
+    flex: 1 1 180px;
+    display: block;
+    position: relative;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+  
+  .bookmark-description {
+    color: rgba(55, 53, 47, 0.6);
+    font-size: 0.75em;
+    overflow: hidden;
+    max-height: 4.5em;
+    word-break: break-word;
+  }
+  
+  .bookmark-href {
+    font-size: 0.75em;
+    margin-top: 0.25em;
+  }
+  
+  .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+  .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+  .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+  .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+  .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+  .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+  .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+  .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+  .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+  .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+  .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+  .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+  .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+  .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+  .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+  .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+  .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+  .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+  .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+  .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+  .highlight-default {
+    color: rgba(55, 53, 47, 1);
+  }
+  .highlight-gray {
+    color: rgba(120, 119, 116, 1);
+    fill: rgba(120, 119, 116, 1);
+  }
+  .highlight-brown {
+    color: rgba(159, 107, 83, 1);
+    fill: rgba(159, 107, 83, 1);
+  }
+  .highlight-orange {
+    color: rgba(217, 115, 13, 1);
+    fill: rgba(217, 115, 13, 1);
+  }
+  .highlight-yellow {
+    color: rgba(203, 145, 47, 1);
+    fill: rgba(203, 145, 47, 1);
+  }
+  .highlight-teal {
+    color: rgba(68, 131, 97, 1);
+    fill: rgba(68, 131, 97, 1);
+  }
+  .highlight-blue {
+    color: rgba(51, 126, 169, 1);
+    fill: rgba(51, 126, 169, 1);
+  }
+  .highlight-purple {
+    color: rgba(144, 101, 176, 1);
+    fill: rgba(144, 101, 176, 1);
+  }
+  .highlight-pink {
+    color: rgba(193, 76, 138, 1);
+    fill: rgba(193, 76, 138, 1);
+  }
+  .highlight-red {
+    color: rgba(212, 76, 71, 1);
+    fill: rgba(212, 76, 71, 1);
+  }
+  .highlight-gray_background {
+    background: rgba(241, 241, 239, 1);
+  }
+  .highlight-brown_background {
+    background: rgba(244, 238, 238, 1);
+  }
+  .highlight-orange_background {
+    background: rgba(251, 236, 221, 1);
+  }
+  .highlight-yellow_background {
+    background: rgba(251, 243, 219, 1);
+  }
+  .highlight-teal_background {
+    background: rgba(237, 243, 236, 1);
+  }
+  .highlight-blue_background {
+    background: rgba(231, 243, 248, 1);
+  }
+  .highlight-purple_background {
+    background: rgba(244, 240, 247, 0.8);
+  }
+  .highlight-pink_background {
+    background: rgba(249, 238, 243, 0.8);
+  }
+  .highlight-red_background {
+    background: rgba(253, 235, 236, 1);
+  }
+  .block-color-default {
+    color: inherit;
+    fill: inherit;
+  }
+  .block-color-gray {
+    color: rgba(120, 119, 116, 1);
+    fill: rgba(120, 119, 116, 1);
+  }
+  .block-color-brown {
+    color: rgba(159, 107, 83, 1);
+    fill: rgba(159, 107, 83, 1);
+  }
+  .block-color-orange {
+    color: rgba(217, 115, 13, 1);
+    fill: rgba(217, 115, 13, 1);
+  }
+  .block-color-yellow {
+    color: rgba(203, 145, 47, 1);
+    fill: rgba(203, 145, 47, 1);
+  }
+  .block-color-teal {
+    color: rgba(68, 131, 97, 1);
+    fill: rgba(68, 131, 97, 1);
+  }
+  .block-color-blue {
+    color: rgba(51, 126, 169, 1);
+    fill: rgba(51, 126, 169, 1);
+  }
+  .block-color-purple {
+    color: rgba(144, 101, 176, 1);
+    fill: rgba(144, 101, 176, 1);
+  }
+  .block-color-pink {
+    color: rgba(193, 76, 138, 1);
+    fill: rgba(193, 76, 138, 1);
+  }
+  .block-color-red {
+    color: rgba(212, 76, 71, 1);
+    fill: rgba(212, 76, 71, 1);
+  }
+  .block-color-gray_background {
+    background: rgba(241, 241, 239, 1);
+  }
+  .block-color-brown_background {
+    background: rgba(244, 238, 238, 1);
+  }
+  .block-color-orange_background {
+    background: rgba(251, 236, 221, 1);
+  }
+  .block-color-yellow_background {
+    background: rgba(251, 243, 219, 1);
+  }
+  .block-color-teal_background {
+    background: rgba(237, 243, 236, 1);
+  }
+  .block-color-blue_background {
+    background: rgba(231, 243, 248, 1);
+  }
+  .block-color-purple_background {
+    background: rgba(244, 240, 247, 0.8);
+  }
+  .block-color-pink_background {
+    background: rgba(249, 238, 243, 0.8);
+  }
+  .block-color-red_background {
+    background: rgba(253, 235, 236, 1);
+  }
+  .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+  .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+  .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+  .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+  .select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+  .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+  .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+  .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+  .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+  .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+  
+  .checkbox {
+    display: inline-flex;
+    vertical-align: text-bottom;
+    width: 16;
+    height: 16;
+    background-size: 16px;
+    margin-left: 2px;
+    margin-right: 5px;
+  }
+  
+  .checkbox-on {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+  }
+  
+  .checkbox-off {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+  }
+    
+  </style></head><body><article id="dd2dfbd0-795a-40e9-a6e4-d962898dffba" class="page sans"><header><img class="page-cover-image" src="23T2%20Tournament%20Rules%20dd2dfbd0795a40e9a6e4d962898dffba/354FCF87-F5FC-4CDF-926E-F603EB607800.jpeg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="23T2%20Tournament%20Rules%20dd2dfbd0795a40e9a6e4d962898dffba/Logo_(600px).png"/></div><h1 class="page-title">23T2 Tournament Rules</h1></header><div class="page-body"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="e5cd5e03-01a5-4bd0-a02e-9e304e459c57"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/bookmark_gray.svg"/></div><div style="width:100%">Drafted for UNSW Rhythm Game Society 
+  By Hari Pramod (Secretary) Hehe#6969,
+  and Ryan Chen (Events Director) 律化娜#6912 .</div></figure><h1 id="a72f0173-262e-45b5-9f17-9bd31b720d30" class="">Legend</h1><ul id="f536a2ce-f03c-4b0a-aaac-e7bc7dbf43bf" class="bulleted-list"><li style="list-style-type:disc">TAG4 - Warmup</li></ul><h2 id="01196c34-28fe-4619-ad03-bcb07cdd912a" class="">Difficulty: </h2><p id="98539f40-9ea2-46b8-bd06-828629ae49da" class="">The tournament will be available in two difficulty brackets</p><ul id="48c2fb97-d605-4c37-8ca0-3ec0f6a82256" class="bulleted-list"><li style="list-style-type:disc">HARD [3.6 - 5.0⭐️]</li></ul><ul id="c195eb61-f73d-4dcb-814e-65da69724f66" class="bulleted-list"><li style="list-style-type:disc">EXPERT [5.0 - 6.6⭐️].</li></ul><h2 id="7efe1946-4e8d-4507-ae7b-664b196da31e" class=""><strong>Map Pool:</strong></h2><p id="1961a9d1-fbbf-4c49-8203-c188a30513ce" class="">The Structure of the Map Pool is as follows:</p><table id="7c680e04-eef6-4331-a67a-855f68701150" class="simple-table"><thead class="simple-table-header"><tr id="f6b2254a-4849-42f4-afc1-7351c2c9fddc"><th id="~OtR" class="simple-table-header-color simple-table-header">Number of Maps</th><th id="MYNX" class="simple-table-header-color simple-table-header">Bracket</th></tr></thead><tbody><tr id="c89f0293-8b3a-4c40-9eeb-18c7e9e79309"><td id="~OtR" class="">6</td><td id="MYNX" class="">No Mod</td></tr><tr id="578e4171-c497-4fa2-b6e3-427c5032c007"><td id="~OtR" class="">6</td><td id="MYNX" class="">Hidden</td></tr><tr id="3947cda4-672b-4273-9840-67846c5a4944"><td id="~OtR" class="">6</td><td id="MYNX" class="">HardRock</td></tr><tr id="c8734dbd-a8d4-40d8-b0d5-0302839d1618"><td id="~OtR" class="">6</td><td id="MYNX" class="">Double Time</td></tr><tr id="c2221f36-fccd-435f-b93c-81977a3a6494"><td id="~OtR" class="">6</td><td id="MYNX" class="">Force Mod</td></tr><tr id="28d8065b-b536-485f-9c1c-f4dbc4807679"><td id="~OtR" class="">1</td><td id="MYNX" class="">Tie Breaker</td></tr></tbody></table><p id="8eb8832b-9551-4942-bcd2-fb5cc2cd8da8" class="">Total Number of Maps: 31</p><p id="57d3f22a-9851-486a-9105-a8041c743037" class=""><strong>Additional Rules:</strong></p><ul id="e9512265-bd7f-4a0e-9491-773a88c9cfe6" class="bulleted-list"><li style="list-style-type:disc"><strong>Force Mod</strong>: This bracket is played with ForceMod activated i.e every player must pick 1 or more mods from either Hidden or Hardrock or Flashlight.</li></ul><ul id="d14799ba-9458-4ca2-a25c-bd5fd8197bba" class="bulleted-list"><li style="list-style-type:disc"><strong>Tie Breaker</strong> is played with ForceMod conditions but it is not necessary for players to enable mods.</li></ul><h2 id="6a4f7406-9906-405b-b4b3-2cb04e1982b0" class="">Maps:</h2><p id="0eac26fb-7e7d-4911-a9ab-355d99e5e297" class="">Maps are chosen with the following factors taken into consideration:</p><ul id="66248e4e-8a6b-4e12-b7e8-f43c2a0bec2c" class="bulleted-list"><li style="list-style-type:disc">Maps suggested by applicants in the application form</li></ul><ul id="21f611ef-4f3f-441e-8e06-c737d7750eb8" class="bulleted-list"><li style="list-style-type:disc">Maps suggested by Volunteers and Tournament Staff</li></ul><ul id="0566fa92-bddd-48d8-a141-3277a0748563" class="bulleted-list"><li style="list-style-type:disc">Popular Maps at the time of the tournament</li></ul><ul id="02236742-e248-4302-acf7-50130bee536a" class="bulleted-list"><li style="list-style-type:disc">Popular / New Anime songs</li></ul><h2 id="4a96f519-8479-40cc-b56b-8fc180f502aa" class=""><strong>Team Structure:</strong></h2><p id="5402f647-0590-4e9e-a570-1e487142ef8c" class="">The team structure for both brackets is as follows:</p><table id="ca0649b3-7eb2-4647-b712-41250bbd5e56" class="simple-table"><tbody><tr id="7c8f8e81-9f92-4b2c-bc6f-eb678c3f8f83"><th id="xEme" class="simple-table-header-color simple-table-header">Team Size</th><td id="|R`n" class="">6 ≤ size &lt; 12</td></tr><tr id="39c71ce2-a014-4c44-8e05-4f82f9799abc"><th id="xEme" class="simple-table-header-color simple-table-header">Active Players</th><td id="|R`n" class="">4</td></tr><tr id="3b75eb72-172e-4cb8-9d05-6d9742c22cea"><th id="xEme" class="simple-table-header-color simple-table-header">Bench</th><td id="|R`n" class="">2 ≤ bench &lt; 8</td></tr></tbody></table><p id="056525ea-5fef-4f79-a683-b5a1e8f3385a" class=""><strong>Additional Rules:</strong></p><ul id="0d86574c-e382-493d-b035-b671ea6ebe25" class="bulleted-list"><li style="list-style-type:disc">Teams are allowed to switch players between active and bench during the breaks provided between each song.</li></ul><ul id="22afd266-f6ce-4fe5-9ed3-7f087a2f81a6" class="bulleted-list"><li style="list-style-type:disc">If a player is absent on the day and the team size does not have a minimum of 4 players then the team is disqualified.<ul id="f43dcbf4-13cd-4f18-8aea-56c299281068" class="bulleted-list"><li style="list-style-type:circle">If there are more than 2 teams participating then the &lt; 4 players team will be added to the bench of either remaining valid teams.</li></ul></li></ul><ul id="7b119e58-2f60-450a-8a28-519522b4af52" class="bulleted-list"><li style="list-style-type:disc">If a team exceeds 12 players then it is to be divided into 2 seperate teams and the tournament structure changes.</li></ul><ul id="bd898120-d026-4f55-947f-33b6679a2f28" class="bulleted-list"><li style="list-style-type:disc">Each Team must elect 1 leader to roll and message the staff on which map is to be picked or banned.<ul id="bd8088af-5d8f-475c-bcc2-675667535e61" class="bulleted-list"><li style="list-style-type:circle">In order to reduce chances of confusion between staff and players during the match. </li></ul></li></ul><h2 id="5368a555-438e-43a5-8f1f-e5d5764f1302" class=""><strong>Score:</strong></h2><ul id="59f18a23-42d9-4d56-87ad-c4507ee28063" class="bulleted-list"><li style="list-style-type:disc">player&#x27;s score will be calculated using <strong>score V2</strong>.</li></ul><ul id="4fe10a4a-c328-4b36-a0b2-5b181e303bae" class="bulleted-list"><li style="list-style-type:disc">team’s wins will be evaluated using the <strong>Team VS</strong> mode in a multiplayer room.</li></ul><ul id="a9ebf9b6-8c80-4f87-87e8-ef9da916ef19" class="bulleted-list"><li style="list-style-type:disc">Players will also have to use the <strong>NoFail</strong> mod during the course of every match<ul id="2be95e9b-24c9-4d62-97eb-06977ed7861f" class="bulleted-list"><li style="list-style-type:circle">Clarification: This does not affect the score in V2</li></ul></li></ul><h2 id="f2552ac6-8a24-43d3-9423-6baacc585077" class=""><strong>Picks and Bans:</strong></h2><ul id="609fe9a9-c1c0-44c4-b59f-ceec898dd6b7" class="bulleted-list"><li style="list-style-type:disc">The first map is picked by the team that wins the warmup game at the start of the tournament.<ul id="628dafe9-4e4d-4faa-81d7-f152fafd0b02" class="bulleted-list"><li style="list-style-type:circle">Winners can decide whether they want to pick or ban.</li></ul></li></ul><ul id="d2d97d57-8fa1-42a9-aa4e-f882160d6102" class="bulleted-list"><li style="list-style-type:disc">Teams Leaders will run a <code>!roll 100</code> between maps, <strong>AFTER</strong> the first map, 
+  whichever team scores higher bans 1 from the bracket, 
+  and the other team leader picks the next map.</li></ul><ul id="19748e3f-afca-45bd-9aaa-a7ab8b65ad39" class="bulleted-list"><li style="list-style-type:disc">Each team will be allowed to ban <strong>1 map</strong> per game (not including Tiebreaker). </li></ul><ul id="61112e23-1716-42a4-88cf-e0adb5f1c89c" class="bulleted-list"><li style="list-style-type:disc">Long break will be held midway through the game for a duration of 15 minutes.</li></ul><ul id="1efe3ecd-138d-4d26-9588-6d995bdd348d" class="bulleted-list"><li style="list-style-type:disc">Midway is defined as <figure id="baa4c860-5fa5-45fd-85a3-a1bcc4424bcb" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.2500em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>Midway</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mn>31</mn><mtext> maps </mtext><mo>−</mo><mn>10</mn><mtext> round bans </mtext><mo>−</mo><mn>10</mn><mtext> unplayed maps </mtext><mo>−</mo><mn>1</mn><mtext> tiebreaker</mtext></mrow><mn>2</mn></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>5</mn><mtext> maps </mtext></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{split}
+  \textrm{Midway} &amp; = \frac{31 \textrm{ maps } - 10 \textrm{   round bans } - 10 \textrm{ unplayed maps } - 1\textrm{ tiebreaker} }{2} \\
+   &amp; = 5 \textrm{ maps }
+  \end{split}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.8574400000000004em;vertical-align:-1.6787200000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.17872em;"><span style="top:-4.17872em;"><span class="pstrut" style="height:3.3714399999999998em;"></span><span class="mord"><span class="mord text"><span class="mord textrm">Midway</span></span></span></span><span style="top:-2.3527199999999997em;"><span class="pstrut" style="height:3.3714399999999998em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6787200000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.17872em;"><span style="top:-4.17872em;"><span class="pstrut" style="height:3.3714399999999998em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">31</span><span class="mord text"><span class="mord textrm"> maps </span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mord text"><span class="mord textrm"> round bans </span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">10</span><span class="mord text"><span class="mord textrm"> unplayed maps </span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mord text"><span class="mord textrm"> tiebreaker</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.3527199999999997em;"><span class="pstrut" style="height:3.3714399999999998em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">5</span><span class="mord text"><span class="mord textrm"> maps </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6787200000000002em;"><span></span></span></span></span></span></span></span></span></span></span></span></div></figure></li></ul><ul id="3e19fb91-19d1-4204-b027-5eba0c14374d" class="bulleted-list"><li style="list-style-type:disc">Teams are allowed 2 minutes to pick/ban the next map,
+  <strong>AND</strong> 2 more minutes to (optionally) switch active with bench players.</li></ul><h2 id="81592ade-b359-4879-8ce8-6f63026e0f53" class=""><span style="border-bottom:0.05em solid">Clarifications:</span></h2><ul id="889238cb-ba75-43e8-85f2-619597aad586" class="bulleted-list"><li style="list-style-type:disc">Incase an active player disconnects between matches they will be allowed 10 minutes to rejoin.<ul id="a7d7f6ad-15e3-488e-b01e-ccd23c103dba" class="bulleted-list"><li style="list-style-type:circle">If there are no bench players the game will end and the team will be disqualified if they are not able to join back within 10 minutes.</li></ul><ul id="3036c526-3b51-4097-9c6e-19b272108608" class="bulleted-list"><li style="list-style-type:circle">If the team has bench players the game will go on with a bench player put in an active player position.</li></ul></li></ul><ul id="67a03bd0-6eb6-447f-8eb8-cf6639feb24d" class="bulleted-list"><li style="list-style-type:disc">If a player disconnects during a match and there is a valid reason, both teams will have to play the map again within 10 minutes of waiting for the player<ul id="7fe06de6-87a4-42b0-a3f0-3239f358ae7d" class="bulleted-list"><li style="list-style-type:circle">if the player is unable to rejoin within 10 minutes a bench player will be chosen to play in their place.</li></ul><ul id="a5ae70e8-b80a-47a3-995b-fdb3abf0e3d1" class="bulleted-list"><li style="list-style-type:circle">if there are no bench players, there will be a total wait time of 15 minutes instead<ul id="dc3655cd-59e5-4dd6-b335-7563ff18160f" class="bulleted-list"><li style="list-style-type:square">if the player is still unable to join the match will end and the team will be disqualified. </li></ul></li></ul></li></ul><ul id="14f235ae-a373-4098-aa21-650077d25abd" class="bulleted-list"><li style="list-style-type:disc">If on the tournament day a team is unable to gather at least 4 active players the match will be rescheduled to a later date.</li></ul><ul id="61185118-f94e-4770-8cad-2e6cb38fc1d7" class="bulleted-list"><li style="list-style-type:disc">Teams will be allowed waiting time of up to 10 minutes before they start of the game to gather players and plan.</li></ul><ul id="16b81a7b-84b6-4c3a-ad3f-5c5cf8123181" class="bulleted-list"><li style="list-style-type:disc">If any incident occurs outside the defined cases above, STAFF will be allowed to reach a decision on the matter based on their judgment of the situation at the time.<ul id="21ba2e59-01e5-4249-8ba6-dabb69fac557" class="bulleted-list"><li style="list-style-type:circle">This decision will be considered final.</li></ul></li></ul><hr id="889c889a-685e-4755-a6c3-2fcd108afb8e"/><h1 id="11298156-7246-4ccd-a26c-1ef8d20fdbc4" class="">Role of Volunteers and Staff</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="0b1d3797-4fda-43c5-af9f-75960efe2303"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">TO DO</div></figure><h1 id="d1a1afc6-f6bc-4779-bcca-790ecde48a13" class="">Summary of changes</h1><ul id="a4a898b6-8b81-4e8b-83f0-a6fd978c31d9" class="bulleted-list"><li style="list-style-type:disc">HARD [3.6 - 5.0⭐️]<ul id="b4a1e37c-50a8-40f2-ba0d-41a18cab3212" class="bulleted-list"><li style="list-style-type:circle">Increased lower limit from 2.6 → 3.6⭐️</li></ul><ul id="ece95aac-fe9d-470a-bea1-976553ccce8d" class="bulleted-list"><li style="list-style-type:circle">Increased upper limit from 4.6 → 5.0⭐</li></ul><ul id="bd9ad8fd-08bf-4612-b7a1-71856b64b539" class="bulleted-list"><li style="list-style-type:circle"><strong>Reason:</strong> Maps that were chosen didn’t really go below 3.6 stars previously so the lower limit was redundant.</li></ul><ul id="99e1df84-cd87-4cb5-a4b2-e683bf34a598" class="bulleted-list"><li style="list-style-type:circle">5 is so funny and cool 😎</li></ul></li></ul><ul id="aab3dbaf-2626-4cbe-a704-73cbcc02204a" class="bulleted-list"><li style="list-style-type:disc">EXPERT [5.0 - 6.6⭐️].<ul id="dfd6aea7-e933-4df0-86a2-c8deba7511f5" class="bulleted-list"><li style="list-style-type:circle">Lowered upper limit from 7.3 → 6.6⭐️</li></ul><ul id="fc6a1c74-b67f-4a58-8c2e-975c1972fc76" class="bulleted-list"><li style="list-style-type:circle"><strong>Reason: </strong>To make maps more S-able, as it is a better look for the competitions if scores range between <strong>A</strong> to <strong>S</strong> rather than <strong>C</strong> to <strong>S</strong>.</li></ul><ul id="d864f15b-a943-49b7-9808-6910cbf9bb79" class="bulleted-list"><li style="list-style-type:circle">5 is so funny and cool 😎</li></ul></li></ul><ul id="17ee22a3-2bfe-4863-9687-1009ce5fe958" class="bulleted-list"><li style="list-style-type:disc">Maps<ul id="8d59fdfc-1091-4adb-a2e7-2125b1c08f25" class="bulleted-list"><li style="list-style-type:circle">New total map pool size of 31 to increase available choice so the match does not get boring.</li></ul><ul id="2bc0466d-4411-4ad8-831a-cf69ce7a6893" class="bulleted-list"><li style="list-style-type:circle">Defined multiple methods of how maps will be picked</li></ul><ul id="69c8e938-6472-4d61-ba81-4eda2bacdb76" class="bulleted-list"><li style="list-style-type:circle">introduced the role of volunteer and tournament staff</li></ul><ul id="f01144a4-5003-403d-99d7-1da9fead45e1" class="bulleted-list"><li style="list-style-type:circle"><strong>Reason:</strong> So that everyone is aware of how the map pool is decided this time, and can raise objections and opinions on the map pool depending on these criteria.</li></ul></li></ul><ul id="1bb79635-c707-4128-8a37-31fb33ea68e9" class="bulleted-list"><li style="list-style-type:disc">Teams<ul id="b4bdd610-7e84-4549-a32d-3df14a7f0215" class="bulleted-list"><li style="list-style-type:circle">Defined the role of Team Leader<ul id="b9df7c30-6251-4ba8-8ad5-d41d5b78616c" class="bulleted-list"><li style="list-style-type:square"><strong>Reason:</strong> it was not in the rules last time but still implemented anyways.</li></ul></li></ul><ul id="5e575799-cc28-4ac6-90c7-38cfd45fb077" class="bulleted-list"><li style="list-style-type:circle">Set a minimum team size of 6<ul id="8a577c46-bd52-489f-96cf-422d1a60ad0e" class="bulleted-list"><li style="list-style-type:square"><strong>Reason: </strong> so that there are at least 2 bench players.</li></ul></li></ul><ul id="3bb43267-35d6-411f-a23f-f627306d5ec7" class="bulleted-list"><li style="list-style-type:circle">Also made the rules around team sizes more defined in this version<ul id="df220d07-631f-45a1-b5f4-bc10c160ecfc" class="bulleted-list"><li style="list-style-type:square"><strong>Reason:</strong> helps avoid confusion.</li></ul></li></ul></li></ul><ul id="7c5ebcca-e52a-4e39-925a-51e0cec91c75" class="bulleted-list"><li style="list-style-type:disc">Picks and Bans<ul id="27cf5224-de0c-411d-96b9-c4d400a23e62" class="bulleted-list"><li style="list-style-type:circle">picks and bans per game instead of once at the start and once midway</li></ul><ul id="c176b088-43b2-4840-a036-55d9af693cdd" class="bulleted-list"><li style="list-style-type:circle">Added number limit for <code>!roll</code> between maps</li></ul><ul id="992657d4-044a-418d-8fa5-fcff44e5fdd9" class="bulleted-list"><li style="list-style-type:circle">Defined Midway between game</li></ul><ul id="3c0d7d31-83d0-4bb3-83a5-6209d3e332ad" class="bulleted-list"><li style="list-style-type:circle">Re-phrased old rules.</li></ul></li></ul><ul id="53c8dad5-bb8c-41c6-b8c6-2f2e76960618" class="bulleted-list"><li style="list-style-type:disc">Lots of changes to clarifications.<ul id="ca2dcd42-21d3-41b8-83d1-19c1718efcbb" class="bulleted-list"><li style="list-style-type:circle">Made it more defined and removed some redundant cases.</li></ul></li></ul><hr id="665179b4-762b-435a-b9a0-141928edf210"/><h1 id="9dd6932c-5885-4295-86df-5ff87176ba06" class="">Proposed Changes</h1><ul id="b52961f9-751f-41b5-8d4f-5fcfd8b9dec0" class="bulleted-list"><li style="list-style-type:disc">more even distribution of map types</li></ul><ul id="8e88784c-3134-4242-9696-fb1e8aff3585" class="bulleted-list"><li style="list-style-type:disc">Warmup game mode / category<ul id="0fb1ba8e-a8c4-4066-bc5d-c7663d70e87a" class="bulleted-list"><li style="list-style-type:circle">Whoever wins gets the first pick/ban</li></ul></li></ul><ul id="765bebe5-cfb3-4c5a-bb69-535bb4ff8efb" class="bulleted-list"><li style="list-style-type:disc">Include unranked / loved maps as well</li></ul></div></article></body></html>
