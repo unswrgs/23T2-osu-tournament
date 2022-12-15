@@ -1,4 +1,11 @@
 
-# <https://unsw-rhythm-game-society.github.io/23T2-osu-tournament/>
+#Link to Page: <https://unswrgs.github.io/23T2-osu-tournament//>
 
-Rules, Maps and Tournament structure
+### Page Contents
+
+- Rules, 
+- Tournament Structure
+
+### Content Left to add
+
+- Tournament Volunteer and Staff Role Details
